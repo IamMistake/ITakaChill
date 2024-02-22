@@ -6,10 +6,160 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <div>LOGO</div>
+    <h1>ITAKA MOVIES</h1>
+    <div>
+        <button>Login</button>
+        <button>Register</button>
+    </div>
+</header>
+<h1>Popular Movies</h1>
+<main class="js-movies">
+    <div class="js-movie">
+        <div class="js-movie-info">
+            <h4 class="js-movie-title">Openhaimer</h4>
+            <div class="js-movie-director">Kiro Kiroski</div>
+            <div class="js-movie-genres">
+                <div class="js-genre">Fiction</div>
+                <div class="js-genre">Fantasy</div>
+            </div>
+            <div class="js-movie-duration">
+                1:30:20
+            </div>
+            <div>
+                <button>Buy Ticker</button>
+            </div>
+        </div>
+    </div>
+</main>
 
-<h1>ITAKA</h1>
-<h1>Test</h1>
 
+<script>
+    /*function updateUrl(movieTitle) {
+        const baseUrl = "movie-main.index";
+        const titleParam = encodeURIComponent(movieTitle);
+        const newUrl = baseUrl + "/" + titleParam;
+        window.history.pushState({ path: newUrl }, '', newUrl);
+    }
+    updateUrl("Tst")*/
+
+
+    async function fetchData(pth)
+    {
+        try
+        {
+            let response = await fetch(pth);
+            return response.json();
+        }
+        catch (e)
+        {
+            console.error("Error:", e);
+        }
+    }
+
+    class UI
+    {
+        movieElement
+        constructor()
+        {
+            this.movieElement = document.querySelector('.js-movies')
+        }
+    }
+
+    class Render
+    {
+        renderMovies()
+        {
+            movies.forEach(movie =>{
+                ui.movieElement.innerHTML += movie.HTMLFormat
+            });
+        }
+    }
+
+    class Movie
+    {
+        title;
+        director;
+        duration;
+        genres;
+        rating;
+        year;
+        price;
+        id;
+
+
+        constructor(id,title, director, duration, genres, rating, year, price)
+        {
+            this.id = id;
+            this.title = title;
+            this.director = director;
+            this.duration = duration;
+            this.genres = genres;
+            this.rating = rating;
+            this.year = year;
+            this.price = price;
+        }
+
+        static getInstanceFromJSON(movieJson)
+        {
+
+            return new Movie(
+                movieJson.id,
+                movieJson.title,
+                movieJson.director,
+                movieJson.length_seconds,
+                movieJson.genre,
+                movieJson.rating,
+                movieJson.year,
+                movieJson.cena
+            );
+        }
+
+        get formattedDuration()
+        {
+            const hours = Math.floor(this.duration / 3600)
+            const minutes = Math.floor((this.duration - hours * 60) / 60);
+            const seconds = Math.floor((this.duration - (hours * 60 + minutes *  60)));
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
+        get HTMLFormat()
+        {
+            let html = `
+            <div class="js-movie-info">
+            <h4 class="js-movie-title">${this.title}</h4>
+            <div class="js-movie-director">${this.title}</div>
+            <div class="js-movie-genres">`
+
+                this.genres.forEach(genre=>{
+                    html += `<div class="js-genre">${genre}</div>`
+                })
+            let endingHTML = `</div>
+            <div class="js-movie-duration">
+                ${this.formattedDuration}
+            </div>
+            <div>
+                <button>Buy Ticker</button>
+            </div>
+        </div>`
+
+            return html + endingHTML;
+        }
+    }
+
+    async function inti()
+    {
+        const moviesJson = await fetchData("../backend/static/filmovi.json");
+        moviesJson.forEach(movieJson => movies.push(Movie.getInstanceFromJSON(movieJson)))
+        console.log(movies);
+    }
+    const movies = [];
+    const ui = new UI();
+    const render = new Render();
+    inti()
+
+</script>
 
 </body>
 </html>
