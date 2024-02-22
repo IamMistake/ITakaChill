@@ -12,7 +12,6 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route("/movies")
 def get_movies():
-    itaka_folder = "ITakaChill"
     backend_folder = "backend"
     static_folder = "static"
     filename = "filmovi.json"
@@ -21,7 +20,7 @@ def get_movies():
     current_directory = Path.cwd()
 
     # Navigate to the file using Path objects
-    file_path =  current_directory/ itaka_folder / backend_folder / static_folder / filename
+    file_path =  current_directory/ backend_folder / static_folder / filename
     res = {}
     with open(file_path,'r') as filmovi:
         filmovi_dict = json.load(filmovi)
