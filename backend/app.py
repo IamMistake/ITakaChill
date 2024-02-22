@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime, timedelta
@@ -8,14 +8,22 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-current_dir = os.path.dirname(__file__)
-json_file_path = os.path.join(current_dir, 'ITakaChill', 'backend', 'static', 'filmovi.json')
+
 
 @app.route("/movies")
 def get_movies():
+    itaka_folder = "ITakaChill"
+    backend_folder = "backend"
+    static_folder = "static"
+    filename = "filmovi.json"
 
+    # Get the current working directory
+    current_directory = Path.cwd()
+
+    # Navigate to the file using Path objects
+    file_path =  current_directory/ itaka_folder / backend_folder / static_folder / filename
     res = {}
-    with open("static/filmovi.json",'r') as filmovi:
+    with open(file_path,'r') as filmovi:
         filmovi_dict = json.load(filmovi)
 
     
