@@ -20,7 +20,7 @@ def get_movies():
     current_directory = Path.cwd()
 
     # Navigate to the file using Path objects
-    file_path =  current_directory/ backend_folder / static_folder / filename
+    file_path =  current_directory / static_folder / filename
     res = {}
     with open(file_path,'r') as filmovi:
         filmovi_dict = json.load(filmovi)
