@@ -1,5 +1,5 @@
 from pathlib import Path
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify , abort
 from flask_cors import CORS
 from datetime import datetime, timedelta
 import json
@@ -10,7 +10,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 
-@app.route("/movies")
+@app.route("/all_movies")
 def get_movies():
     backend_folder = "backend"
     static_folder = "static"
@@ -27,6 +27,26 @@ def get_movies():
 
     
     return filmovi_dict
+
+
+@app.route("/movies/<id>")
+def get_single_movie(id):
+    backend_folder = "backend"
+    static_folder = "static"
+    filename = "filmovi.json"
+
+    current_directory = Path.cwd()
+
+    file_path =  current_directory/ backend_folder / static_folder / filename
+
+    with open(file_path,'r') as filmovi:
+        filmovi_dict = json.load(filmovi)
+        for film in filmovi_dict:
+            if film["id"] == int(id):
+                return jsonify(film)
+
+    return jsonify(404,f"Movie with id:{id} Not found")
+
 
 
 
