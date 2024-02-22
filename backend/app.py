@@ -15,7 +15,7 @@ json_file_path = os.path.join(current_dir, 'ITakaChill', 'backend', 'static', 'f
 def get_movies():
 
     res = {}
-    with open(json_file_path,'r') as filmovi:
+    with open("static/filmovi.json",'r') as filmovi:
         filmovi_dict = json.load(filmovi)
 
     
