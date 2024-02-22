@@ -35,16 +35,9 @@
 </main>
 
 
+<script src="cMovie.js"></script>
+
 <script>
-    /*function updateUrl(movieTitle) {
-        const baseUrl = "movie-main.index";
-        const titleParam = encodeURIComponent(movieTitle);
-        const newUrl = baseUrl + "/" + titleParam;
-        window.history.pushState({ path: newUrl }, '', newUrl);
-    }
-    updateUrl("Tst")*/
-
-
     async function fetchData(pth)
     {
         try
@@ -65,99 +58,66 @@
         {
             this.movieElement = document.querySelector('.js-movies')
         }
+
+        addEventsForBuyButtons()
+        {
+            const buttons = document.querySelectorAll(".js-buy-ticket-btn");
+            buttons.forEach(button => {
+                button.addEventListener("click", ()=>{
+                    app.loadMovie(button.dataset.movieId)
+                })
+            })
+        }
+    }
+
+    class MovieApp
+    {
+        movies;
+        constructor()
+        {
+            this.movies = new Map();
+        }
+
+        addMovie(movie)
+        {
+            this.movies.set(movie.id, movie);
+        }
+
+        loadMovie(movieId)
+        {
+            const movie = this.movies.get(parseInt(movieId));
+            localStorage.setItem("movie", JSON.stringify(movie))
+            window.location.href = "sali.html";
+        }
+
+        async  inti()
+        {
+            const moviesJson = await fetchData("../backend/static/filmovi.json");
+            moviesJson.forEach(movieJson => {
+                let movie = Movie.getInstanceFromJSON(movieJson);
+                app.addMovie(movie)
+            })
+            render.renderMovies();
+            ui.addEventsForBuyButtons()
+        }
     }
 
     class Render
     {
         renderMovies()
         {
-            movies.forEach(movie =>{
+            app.movies.forEach((movie,key) =>{
                 ui.movieElement.innerHTML += movie.HTMLFormat
             });
         }
     }
 
-    class Movie
-    {
-        title;
-        director;
-        duration;
-        genres;
-        rating;
-        year;
-        price;
-        id;
 
-
-        constructor(id,title, director, duration, genres, rating, year, price)
-        {
-            this.id = id;
-            this.title = title;
-            this.director = director;
-            this.duration = duration;
-            this.genres = genres;
-            this.rating = rating;
-            this.year = year;
-            this.price = price;
-        }
-
-        static getInstanceFromJSON(movieJson)
-        {
-
-            return new Movie(
-                movieJson.id,
-                movieJson.title,
-                movieJson.director,
-                movieJson.length_seconds,
-                movieJson.genre,
-                movieJson.rating,
-                movieJson.year,
-                movieJson.cena
-            );
-        }
-
-        get formattedDuration()
-        {
-            const hours = Math.floor(this.duration / 3600)
-            const minutes = Math.floor((this.duration - hours * 60) / 60);
-            const seconds = Math.floor((this.duration - (hours * 60 + minutes *  60)));
-            return `${hours}:${minutes}:${seconds}`;
-        }
-
-        get HTMLFormat()
-        {
-            let html = `
-            <div class="js-movie-info">
-            <h4 class="js-movie-title">${this.title}</h4>
-            <div class="js-movie-director">${this.title}</div>
-            <div class="js-movie-genres">`
-
-                this.genres.forEach(genre=>{
-                    html += `<div class="js-genre">${genre}</div>`
-                })
-            let endingHTML = `</div>
-            <div class="js-movie-duration">
-                ${this.formattedDuration}
-            </div>
-            <div>
-                <button>Buy Ticker</button>
-            </div>
-        </div>`
-
-            return html + endingHTML;
-        }
-    }
-
-    async function inti()
-    {
-        const moviesJson = await fetchData("../backend/static/filmovi.json");
-        moviesJson.forEach(movieJson => movies.push(Movie.getInstanceFromJSON(movieJson)))
-        console.log(movies);
-    }
-    const movies = [];
+    const app = new MovieApp();
     const ui = new UI();
     const render = new Render();
-    inti()
+    app.inti()
+    console.log(Movie.getInstanceFromLocalStorage())
 
 </script>
 
