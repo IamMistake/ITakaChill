@@ -11,7 +11,8 @@
             "Mystery",
             "Thriller"
         ],
-        "cena":300
+        "cena":300,
+        "schedule": ["2024-02-26","2024-02-27"]
     },
     {
         "id":1,
@@ -24,7 +25,8 @@
             "Adventure",
             "Fantasy"
         ],
-        "cena":300
+        "cena":300,
+        "schedule": ["2024-02-27","2024-02-28"]
     },
     {
         "id":2,
