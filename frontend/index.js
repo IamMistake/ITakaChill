@@ -52,9 +52,9 @@ class MovieApp
 
     async  inti()
     {
-        const moviesJson = await fetchData("../backend/static/filmovi.json");
+        const moviesJson = await fetchData("https://raw.githubusercontent.com/IamMistake/ITakaChill/main/backend/static/filmovi.json");
         moviesJson.forEach(movieJson => {
-            let movie = Movie.getInstanceFromJSON(movieJson);
+            const movie = Movie.getInstanceFromJSON(movieJson);
             app.addMovie(movie)
         })
         render.renderMovies();
