@@ -58,7 +58,7 @@ class Movie
         let html = `
             <div class="js-movie-info">
             <h4 class="js-movie-title">${this.title}</h4>
-            <div class="js-movie-director">${this.title}</div>
+            <div class="js-movie-director">${this.director}</div>
             <div class="js-movie-genres">`
 
         this.genres.forEach(genre=>{
