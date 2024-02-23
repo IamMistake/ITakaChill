@@ -8,35 +8,33 @@
 <body>
 
 <header>
-
+    <div id="logo"></div>
+    <h1>ITAKA MOVIES</h1>
+    <div id="buttons">
+        <button>Login</button>
+        <button>Register</button>
+    </div>
 </header>
 
 <div id="banner"></div>
 <div id="sali">
     <div class="borderSala"></div>
-<!--    <div class="sala">-->
-<!--        Sala 1-->
-<!--        <p class="vreme" id="vreme1">16-00</p>-->
-<!--    </div>-->
-<!--    <div class="borderSala"></div>-->
-<!--    <div class="sala">-->
-<!--        Sala 2-->
-<!--        <p class="vreme" id="vreme2">20-00</p>-->
-<!--    </div>-->
-<!--    <div class="borderSala"></div>-->
-<!--    <div class="sala">-->
-<!--        Sala 3-->
-<!--        <p class="vreme" id="vreme3">22-00</p>-->
-<!--    </div>-->
-<!--    <div class="borderSala"></div>-->
 </div>
 <div id="main">
     <div id="chairs">
         <div id="place">
-            <div class="chair"></div>
+<!--            <div class="chair"></div>-->
         </div>
     </div>
-    <div id="cost"></div>
+    <div id="cost">
+        <h2>COST</h2>
+        <div id="pari">
+            <p><span id="howMany">0</span> x <span id="cena">300</span> = <span id="vkupno">0</span></p>
+        </div>
+        <div id="plati">
+            <button onclick="plati(this)">Plati</button>
+        </div>
+    </div>
 </div>
 
 <script src="saliFunc.js"></script>

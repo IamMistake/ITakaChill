@@ -1,5 +1,62 @@
+:root {
+    --text: #2B124C;
+    --background: #fbe5da;
+    --primary: #dfb6b3;
+    --secondary: #86506d;
+    --accent: #512a5a;
+}
+
 body {
     margin: 0;
     padding: 0;
-    display: flex;
+    box-sizing: border-box;
+    background: var(--primary);
 }
+
+button {
+    background-color: var(--primary);
+    border: 0.5px solid var(--accent);
+    color: var(--text);
+    border-radius: 15px;
+    font-size: 16px;
+    margin-right: 6px;
+    width: 80px;
+    height: 30px;
+}
+button:hover {
+    background-color: var(--secondary);
+}
+#buttons {
+    /*width: 10%;*/
+    margin: auto 30px auto 0;
+    /*margin: auto;*/
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(var(--primary) 5%, var(--background) 60%);;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1:first-of-type {
+    font-size: 33px;
+    color: var(--text);
+    /*color: red;*/
+}
+
+#logo {
+    margin: 4px;
+    border: 0.5px solid var(--accent);
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    background-color: var(--accent);
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyI0Ry1l7kvDfypXZ9DjCVFUZ6S87LuEZ_w&usqp=CAU");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/*MOZI VAKA*/
+/*https://webflow.com/made-in-webflow/website/republica-pureza-2*/
