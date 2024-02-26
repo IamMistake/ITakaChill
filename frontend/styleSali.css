@@ -5,6 +5,9 @@
     --secondary: #86506d;
     --accent: #512a5a;
 }
+a:hover {
+    opacity: 60%;
+}
 
 body {
     margin: 0;
