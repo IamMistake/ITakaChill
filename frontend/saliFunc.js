@@ -1,4 +1,6 @@
-let id = parseInt(prompt("ID OD FILM 0-10f"));
+let movieID = localStorage.getItem('movie')
+movieID = JSON.parse(movieID)
+let id = movieID['id']/*parseInt(prompt("ID OD FILM 0-10f"));*/
 
 let banner = document.getElementById("banner");
 let sali = document.getElementById("sali");
@@ -9,6 +11,10 @@ let datumSelected = 0;
 let costBr = 0;
 
 doStuff();
+
+function getId() {
+
+}
 
 async function fetchData(pth) {
     try {
