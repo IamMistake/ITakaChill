@@ -1,4 +1,4 @@
-let id = parseInt(prompt("ID OD FILM 0-10"));
+let id = parseInt(prompt("ID OD FILM 0-10f"));
 
 let banner = document.getElementById("banner");
 let sali = document.getElementById("sali");
@@ -28,7 +28,7 @@ function chairs(x) {
             if(matrix[i][j] === 1) {
                 let div = `<div id="${"" + i + j}" class="zafatenaChair"></div>`
                 chairsElem.innerHTML += div;
-                costBr++;   //TODO REMOVE THIS AFTER FINISH CODING
+                // costBr++;   //TODO REMOVE THIS AFTER FINISH CODING
             } else {
                 let div = `<div onclick="zafati(this)" id="${"" + i + j}" class="nezafatenaChair"></div>`
                 chairsElem.innerHTML += div;
@@ -58,8 +58,9 @@ async function zafati(chair) {
 
     // TODO NA BACKEND DA SE DADAT X,Y ZA DATUM[datumSelected] OD FILD ID = id
 
-    chair.setAttribute("onclick", "");
-    chair.setAttribute("class", "zafatenaChair")
+
+    chair.removeAttribute("onclick");
+    chair.setAttribute("class", "zafatenaChairJas")
 
     presmetajCost();
 
@@ -90,10 +91,10 @@ function openSala(x) {
     }
 }
 
-function changeDate(ova) {
+async function changeDate(ova) {
     let date = ova.id;
     datumSelected = parseInt(date.charAt(5));
-    doStuff();
+     await doStuff();
 }
 
 function thumbnail(x) {
