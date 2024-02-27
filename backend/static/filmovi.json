@@ -12,7 +12,8 @@
             "Thriller"
         ],
         "cena":300,
-        "schedule": ["2024-02-26","2024-02-27"]
+        "schedule": ["2024-02-26","2024-02-27"],
+        "src": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781800261952/echoes-of-eternity-9781800261952_xlg.jpg"
     },
     {
         "id":1,
@@ -26,7 +27,8 @@
             "Fantasy"
         ],
         "cena":300,
-        "schedule": ["2024-02-27","2024-02-28"]
+        "schedule": ["2024-02-27","2024-02-28"],
+        "src": "https://w0.peakpx.com/wallpaper/408/350/HD-wallpaper-the-last-voyage-of-the-demeter-the-last-voyage-of-the-demeter-horror-movies-2023-movies.jpg"
     },
     {
         "id":2,
@@ -40,7 +42,8 @@
             "Adventure",
             "Fantasy"
         ],
-        "cena":300
+        "cena":300,
+        "src": "https://images4.alphacoders.com/251/251714.jpg"
     },
     {
         "id":3,
