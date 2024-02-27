@@ -124,10 +124,32 @@ h1:first-of-type {
     height: 550px;
     border: 2px solid var(--accent);
 }
-#chairs {
-    margin-left: 300px;
+#movieInfo {
+    width: 37%;
+    background: var(--secondary);
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px var(--text);
+    margin: 50px;
 
-    width: 66.666%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Optional: Center text within the div */
+
+    font-weight: bold;
+    color: var(--text);
+    font-size: 28px;
+}
+#movieInfo ul {
+    font-size: 22px;
+}
+
+#chairs {
+    /*margin-left: 300px;*/
+
+    width: 38%;
     background: var(--primary);
 
     align-items: center;
@@ -136,12 +158,18 @@ h1:first-of-type {
     display: flex;
 }
 #cost {
-    width: 33.333%;
+    width: 25%;
     background: var(--secondary);
     border-radius: 20px;
     border: 1px solid black;
     box-shadow: 5px 5px 10px var(--text);
     margin: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Optional: Center text within the div */
 }
 
 .zafatenaChairJas {
@@ -179,14 +207,6 @@ h1:first-of-type {
     width: 80%;
     height: 80%;
 }
-
-#cost {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center; /* Optional: Center text within the div */
-  }
 
 #cost h2 {
     font-weight: bold;
